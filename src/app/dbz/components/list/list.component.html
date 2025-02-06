@@ -16,8 +16,9 @@
     }"
   >
     <div>
-      <span class="text-primary">{{ i + 1 }}</span> {{ character.name }} -
-      {{ character.power }}
+      <span class="text-primary">{{"the position is: "+(i)}}</span>
+      <span class="text-success">{{" the id is: "+(character.id)}}</span>
+      {{ character.name }} -{{ character.power }}
       <span>
         {{
           isLast
@@ -28,6 +29,6 @@
         }}
       </span>
     </div>
-    <button class="btn btn-danger" (click)="this.emitIndex(i)">X</button>
+    <button class="btn btn-danger" (click)="this.emitIndex(character.id || '')">X</button>
   </li>
 </ul>

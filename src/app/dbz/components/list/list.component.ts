@@ -12,7 +12,7 @@ import { CharacterDBZ } from '../../classes/CharacterDBZ';
 export class ListComponent {
 
   @Output()
-  onIndex : EventEmitter<number> = new EventEmitter();
+  onIndex : EventEmitter<string> = new EventEmitter();
 
   public title : string = 'Lista de heroes'
   public charactersDBZ : CharacterDBZ = new CharacterDBZ();
@@ -26,8 +26,11 @@ export class ListComponent {
   public getDBZList(): CharacterInterface[]{
     return this.dbzList;
   }
-  public emitIndex(index : number) : void{
-    this.onIndex.emit(index);
-    console.log(index);
+  public emitIndex(id? : string) : void{
+    if(!id){
+      alert('El id no existe')
+      return;
+    }
+    this.onIndex.emit(id);
   }
 }

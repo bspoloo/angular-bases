@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterInterface } from '../interfaces/characterInterface';
 import { CharacterDBZ } from '../classes/CharacterDBZ';
+import { DbzService } from '../services/dbz/dbz.service';
 
 @Component({
   selector: 'app-dbz-main-page',
@@ -9,22 +10,16 @@ import { CharacterDBZ } from '../classes/CharacterDBZ';
 })
 
 export class MainPageComponent  {
-  public characters : CharacterInterface[];
-  public characterDBZ: CharacterDBZ = new CharacterDBZ();
-  constructor() {
-    this.characters =  this.characterDBZ.getCharacters();
-  }
-  public getCharacters() : CharacterInterface[]{
-    return this.characters;
+  constructor(private dbzService : DbzService) {}
+
+  public getCharacters() : CharacterInterface[] {
+    return this.dbzService.getCharacters();
   }
   public saveCharacter(character : CharacterInterface): void{
-    this.characters.push({
-      name: character.name,
-      power: character.power
-    });
+    this.dbzService.saveCharacter(character);
   }
-  public deleteCharacterByIndex(index : number) : void{
-    this.characters.splice(index,1);
-    console.log(index);
+  public deleteCharacterById(id : string) : void{
+    this.dbzService.deleteCharacterByIndex(id);
   }
+
 }
