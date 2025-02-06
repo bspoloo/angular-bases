@@ -3,17 +3,12 @@
 
 <div class="row">
   <div class="col">
-    <app-component-list></app-component-list>
+    <app-component-list [dbzList]="this.getCharacters()" (onIndex)="this.deleteCharacterByIndex($event)"></app-component-list>
   </div>
 
   <div class="col">
-    <h4>Add Character</h4>
-    <form action="">
-      <div class="row">
-        <input class="form-control mb-2" type="text" placeholder="Name of character" />
-        <input class="form-control mb-2" type="number" placeholder="Power" />
-      <button type="submit" class="btn btn-primary">Add</button>
-    </div>
-    </form>
+
+    <app-component-form (onNewCharacter)="this.saveCharacter($event)"></app-component-form>
+
   </div>
 </div>

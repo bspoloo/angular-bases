@@ -16,6 +16,14 @@ export class CharacterDBZ{
       {
         name: 'Bulma',
         power: 10,
+      },
+      {
+        name: 'Yamcha',
+        power: 200,
+      },
+      {
+        name: 'Magin Boo',
+        power: 100000,
       }
     ]
   }
